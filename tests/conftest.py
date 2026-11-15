@@ -27,7 +27,8 @@ def first_category():
         name='Смартфоны',
         description='Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для '
                     'удобства жизни',
-        products=Product('Oppo', 'Быстрый флагман', 34.999, 4)
+        products=[Product('Oppo', 'Быстрый флагман', 34.999, 4),
+                  Product('Oppo', 'Старая версия', 24.999, 5)]
     )
 
 @pytest.fixture
@@ -36,10 +37,10 @@ def second_category():
         name='Смартфоны',
         description='Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для '
                     'удобства жизни, и не только',
-        products=Product(
+        products=[Product(
             name='Wivo',
             description='Капец какой быстрый флагман',
             price=44.999,
             quantity=2
-        )
+        )]
     )
