@@ -1,12 +1,14 @@
 import json
 import os
+from typing import Any
 
 from src.category import Category
 from src.product import Product
 
-def read_json(path: str) -> dict:
+
+def read_json(path: str) -> Any:
     full_path = os.path.abspath(path)
-    with open(full_path, 'r', encoding='utf8') as file:
+    with open(full_path, "r", encoding="utf8") as file:
         data = json.load(file)
     return data
 
@@ -21,8 +23,9 @@ def create_category_from_json(data):
         categories.append(Category(**category))
     return categories
 
-if __name__ == '__main__':
-    json_data = read_json('data/products.json')
+
+if __name__ == "__main__":
+    json_data = read_json("data/products.json")
     category_data = create_category_from_json(json_data)
     print(category_data)
     print(category_data[0].name)
