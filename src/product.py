@@ -42,3 +42,14 @@ class Product:
             price=product_dict["price"],
             quantity=product_dict["quantity"],
         )
+
+
+if __name__ == '__main__':
+    p = Product('Телефон', 'Смартфон', 50000, 10)
+    print(p.price)
+    p.price = 60000
+    print(p.price)
+    p.price = -5
+    print(p.price)
+    p.price = 55000
+    print(p.price)
