@@ -19,16 +19,16 @@ class Product:
     def price(self, new_price) -> None:
         """Сеттер для изменения цены товара"""
         if new_price <= 0:
-            print('Цена не должна быть нулевая или отрицательная')
+            print("Цена не должна быть нулевая или отрицательная")
             return
         if new_price < self.__price:
-            answer = input('Понизить цену? (y/n): ')
-            if answer.lower() != 'y':
+            answer = input("Понизить цену? (y/n): ")
+            if answer.lower() != "y":
                 return
         self.__price = new_price
 
     @classmethod
-    def new_product(cls, product_dict: dict, existing_products: list | None = None) -> 'Product':
+    def new_product(cls, product_dict: dict, existing_products: list | None = None) -> "Product":
         """Создает объект Product из словаря"""
         if existing_products:
             for p in existing_products:
@@ -44,8 +44,8 @@ class Product:
         )
 
 
-if __name__ == '__main__':
-    p = Product('Телефон', 'Смартфон', 50000, 10)
+if __name__ == "__main__":
+    p = Product("Телефон", "Смартфон", 50000, 10)
     print(p.price)
     p.price = 60000
     print(p.price)

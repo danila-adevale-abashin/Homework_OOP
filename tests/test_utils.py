@@ -60,5 +60,3 @@ def test_create_category_from_json():
     assert category.name == "Электроника"
     assert "Телефон, 50000.0 руб. Остаток: 10 шт." in category.products
     assert "Ноутбук, 80000.0 руб. Остаток: 5 шт." in category.products
-
-
