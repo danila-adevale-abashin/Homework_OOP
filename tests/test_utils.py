@@ -58,9 +58,7 @@ def test_create_category_from_json():
     category = categories[0]
     assert isinstance(category, Category)
     assert category.name == "Электроника"
-    assert len(category.products) == 2
+    assert "Телефон, 50000.0 руб. Остаток: 10 шт." in category.products
+    assert "Ноутбук, 80000.0 руб. Остаток: 5 шт." in category.products
 
-    product = category.products[0]
-    assert isinstance(product, Product)
-    assert product.name == "Телефон"
-    assert product.price == 50000.0
+
