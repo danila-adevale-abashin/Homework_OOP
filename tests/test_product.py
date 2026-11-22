@@ -36,3 +36,16 @@ def test_new_product():
     assert p.name == "Xiaomi"
     assert p.price == 20000
     assert p.quantity == 5
+
+
+def test_product_str(first_product):
+    assert str(first_product) == "Oppo, 34999 руб. Остаток: 4 шт."
+
+
+def test_product_add(first_product, second_product):
+    # 34999 * 4 + 44999 * 2 = 139996 + 89998 = 229994
+    assert first_product + second_product == 229994
+
+
+def test_product_add_with_non_product(first_product):
+    assert first_product.__add__(123) is NotImplemented
