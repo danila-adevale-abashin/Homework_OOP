@@ -6,12 +6,12 @@ from src.product import Product
 
 @pytest.fixture
 def first_product():
-    return Product(name="Oppo", description="Быстрый флагман", price=34.999, quantity=4)
+    return Product(name="Oppo", description="Быстрый флагман", price=34999, quantity=4)
 
 
 @pytest.fixture
 def second_product():
-    return Product(name="Wivo", description="Капец какой быстрый флагман", price=44.999, quantity=2)
+    return Product(name="Wivo", description="Капец какой быстрый флагман", price=44999, quantity=2)
 
 
 @pytest.fixture
@@ -20,7 +20,7 @@ def first_category():
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для "
         "удобства жизни",
-        products=[Product("Oppo", "Быстрый флагман", 34.999, 4), Product("Oppo", "Старая версия", 24.999, 5)],
+        products=[Product("Oppo", "Быстрый флагман", 34999, 4), Product("Oppo", "Старая версия", 24999, 5)],
     )
 
 
@@ -30,5 +30,5 @@ def second_category():
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для "
         "удобства жизни, и не только",
-        products=[Product(name="Wivo", description="Капец какой быстрый флагман", price=44.999, quantity=2)],
+        products=[Product(name="Wivo", description="Капец какой быстрый флагман", price=44999, quantity=2)],
     )
