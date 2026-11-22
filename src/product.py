@@ -43,17 +43,16 @@ class Product:
             quantity=product_dict["quantity"],
         )
 
-
     def __str__(self) -> str:
         """Вывод строки с информацией о товаре"""
-        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
-
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: "Product") -> float:
         """Сумма произведений цены на количество у двух товаров."""
         if not isinstance(other, Product):
             return NotImplemented
         return self.price * self.quantity + other.price * other.quantity
+
 
 if __name__ == "__main__":
     p = Product("Телефон", "Смартфон", 50000, 10)

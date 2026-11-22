@@ -25,7 +25,6 @@ class Category:
         """Возвращает строку со списком товаров, используя __str__ продукта."""
         return "".join(str(product) + "\n" for product in self.__products)
 
-
     def __str__(self) -> str:
         """Название категории и общее количество товаров на складе."""
         total_quantity = sum(product.quantity for product in self.__products)
