@@ -1,6 +1,8 @@
+import pytest
+
 from src.category import Category, CategoryIterator
 from src.product import Product
-import pytest
+
 
 def test_category_init(first_category, second_category):
     assert first_category.name == "Смартфоны"
@@ -46,9 +48,9 @@ def test_category_iterator(first_category):
     assert products[0].name == "Oppo"
     assert products[1].name == "Oppo"
 
+
 def test_add_product_invalid_type(first_category):
     with pytest.raises(TypeError):
         first_category.add_product("not a product")
     with pytest.raises(TypeError):
         first_category.add_product(123)
-

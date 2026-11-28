@@ -1,5 +1,6 @@
-from src.product import Product
 import pytest
+
+from src.product import Product
 
 
 def test_product_init(first_product):
@@ -60,8 +61,9 @@ def test_product_add_same_type():
 
 
 def test_product_add_different_types():
-    from src.smartphone import Smartphone
     from src.lawn_grass import LawnGrass
+    from src.smartphone import Smartphone
+
     p1 = Product("A", "B", 100, 2)
     s1 = Smartphone("S", "D", 100, 2, "high", "X", 128, "black")
     l1 = LawnGrass("L", "D", 100, 2, "Russia", "10 days", "green")
