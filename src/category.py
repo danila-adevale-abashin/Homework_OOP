@@ -22,11 +22,31 @@ class Category:
 
     @property
     def products(self):
-        """Возвращает строку со списком продуктов"""
-        prod_str = ""
-        for prod in self.__products:
-            prod_str += f"{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n"
-        return prod_str
+        """Возвращает строку со списком товаров, используя __str__ продукта."""
+        return "".join(str(product) + "\n" for product in self.__products)
+
+    def __str__(self) -> str:
+        """Название категории и общее количество товаров на складе."""
+        total_quantity = sum(product.quantity for product in self.__products)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
+
+
+class CategoryIterator:
+
+    def __init__(self, category: Category):
+        self.category = category
+        self.index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        products = self.category._Category__products  # доступ к приватному атрибуту
+        if self.index < len(products):
+            product = products[self.index]
+            self.index += 1
+            return product
+        raise StopIteration
 
 
 if __name__ == "__main__":

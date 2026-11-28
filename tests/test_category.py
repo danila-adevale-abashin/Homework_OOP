@@ -1,4 +1,4 @@
-from src.category import Category
+from src.category import Category, CategoryIterator
 from src.product import Product
 
 
@@ -26,3 +26,22 @@ def test_products_getter(first_category):
 def test_products_getter_empty():
     empty_cat = Category("Пустая", "Описание")
     assert empty_cat.products == ""
+
+
+def test_category_str(first_category):
+    # В first_category два продукта: quantity=4 и quantity=5 => итого 9
+    assert str(first_category) == "Смартфоны, количество продуктов: 9 шт."
+
+
+def test_products_getter_uses_str(first_category):
+    # Геттер теперь использует str(product)
+    result = first_category.products
+    assert "Oppo, 34999 руб. Остаток: 4 шт.\n" in result
+    assert "Oppo, 24999 руб. Остаток: 5 шт.\n" in result
+
+
+def test_category_iterator(first_category):
+    products = list(CategoryIterator(first_category))
+    assert len(products) == 2
+    assert products[0].name == "Oppo"
+    assert products[1].name == "Oppo"
