@@ -16,17 +16,19 @@ class Category:
         Category.product_count += len(self.__products) if self.__products else 0
 
     def add_product(self, product: Product):
-        """Добавляет продукт в категорию и увеличивает счетчик продуктов"""
+        """Добавляет продукт в категорию, если он является Product или его наследником"""
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только объекты Product или его наследников")
         self.__products.append(product)
         Category.product_count += 1
 
     @property
     def products(self):
-        """Возвращает строку со списком товаров, используя __str__ продукта."""
+        """Возвращает строку со списком товаров, используя __str__ продукта"""
         return "".join(str(product) + "\n" for product in self.__products)
 
     def __str__(self) -> str:
-        """Название категории и общее количество товаров на складе."""
+        """Название категории и общее количество товаров на складе"""
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 

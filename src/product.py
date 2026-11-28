@@ -48,9 +48,9 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: "Product") -> float:
-        """Сумма произведений цены на количество у двух товаров."""
-        if not isinstance(other, Product):
-            return NotImplemented
+        """Сумма произведений цены на количество у двух товаров одного класса"""
+        if type(self) is not type(other):
+            raise TypeError("Нельзя складывать товары разных классов")
         return self.price * self.quantity + other.price * other.quantity
 
 

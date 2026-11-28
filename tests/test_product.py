@@ -1,3 +1,5 @@
+import pytest
+
 from src.product import Product
 
 
@@ -48,4 +50,25 @@ def test_product_add(first_product, second_product):
 
 
 def test_product_add_with_non_product(first_product):
-    assert first_product.__add__(123) is NotImplemented
+    with pytest.raises(TypeError):
+        first_product + 123
+
+
+def test_product_add_same_type():
+    p1 = Product("A", "B", 100, 2)
+    p2 = Product("C", "D", 200, 3)
+    assert p1 + p2 == 100 * 2 + 200 * 3  # 800
+
+
+def test_product_add_different_types():
+    from src.lawn_grass import LawnGrass
+    from src.smartphone import Smartphone
+
+    p1 = Product("A", "B", 100, 2)
+    s1 = Smartphone("S", "D", 100, 2, "high", "X", 128, "black")
+    l1 = LawnGrass("L", "D", 100, 2, "Russia", "10 days", "green")
+
+    with pytest.raises(TypeError):
+        p1 + s1
+    with pytest.raises(TypeError):
+        s1 + l1
