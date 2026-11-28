@@ -12,12 +12,12 @@ class Product:
 
     @property
     def price(self) -> float:
-        """Геттер для цены товара"""
+        """ Геттер для цены товара """
         return self.__price
 
     @price.setter
     def price(self, new_price) -> None:
-        """Сеттер для изменения цены товара"""
+        """ Сеттер для изменения цены товара """
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
             return
@@ -29,7 +29,7 @@ class Product:
 
     @classmethod
     def new_product(cls, product_dict: dict, existing_products: list | None = None) -> "Product":
-        """Создает объект Product из словаря"""
+        """ Создает объект Product из словаря """
         if existing_products:
             for p in existing_products:
                 if p.name == product_dict["name"]:
@@ -44,13 +44,13 @@ class Product:
         )
 
     def __str__(self) -> str:
-        """Вывод строки с информацией о товаре"""
+        """ Вывод строки с информацией о товаре """
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: "Product") -> float:
-        """Сумма произведений цены на количество у двух товаров."""
-        if not isinstance(other, Product):
-            return NotImplemented
+        """ Сумма произведений цены на количество у двух товаров одного класса """
+        if type(self) is not type(other):
+            raise TypeError('Нельзя складывать товары разных классов')
         return self.price * self.quantity + other.price * other.quantity
 
 
